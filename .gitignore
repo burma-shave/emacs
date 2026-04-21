@@ -1,0 +1,16 @@
+# Emacs compiled files
+*.elc
+*.eln
+eln-cache/
+
+# Package directory
+elpa/
+
+# Auto-save and backup files
+auto-save-list/
+*~
+\#*\#
+.\#*
+
+# Custom file (often machine-specific)
+custom.el
