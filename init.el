@@ -33,6 +33,36 @@
   (markdown-mode . visual-fill-column-mode))
 
 
+(require 'server)
+(unless (server-running-p) (server-start))
+
+(use-package org
+  :ensure nil
+  :bind ("C-c c" . org-capture)
+  :hook
+  (org-mode . visual-line-mode)
+  (org-mode . adaptive-wrap-prefix-mode)
+  (org-mode . visual-fill-column-mode)
+  :config
+  (setq org-directory "~/org")
+  (setq org-capture-templates
+        '(("l" "OBA Logbook" entry
+           (file (lambda ()
+                   (expand-file-name
+                    (format-time-string "%Y-%m-%d.org")
+                    "~/org/oba/logbook")))
+           "* %<%H:%M> %i%?\n  %T\n"
+           :empty-lines 1)))
+  (defun oba-log (text)
+    (let ((org-capture-initial text)
+          (org-capture-entry
+           (append (copy-tree (assoc "l" org-capture-templates))
+                   '(:immediate-finish t))))
+      (org-capture)))
+  (setq org-agenda-custom-commands
+        '(("o" "OBA Logbook" agenda ""
+           ((org-agenda-files (directory-files "~/org/oba/logbook" t "\\.org$")))))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
