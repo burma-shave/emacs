@@ -13,10 +13,10 @@
   :demand t
   :config
   (setq modus-themes-headings
-      '((1 . (variable-pitch 1.8))
-        (2 . (1.4))
-        (3 . (1.2))
-        (4 . (1.1))))
+      '((1 . (variable-pitch 1.4))
+        (2 . (1.2))
+        (3 . (1.1))
+        (4 . (1.0))))
   (modus-themes-load-theme 'modus-operandi-tinted))
 
 (use-package adaptive-wrap
