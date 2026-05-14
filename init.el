@@ -42,7 +42,6 @@
   :hook
   (org-mode . visual-line-mode)
   (org-mode . adaptive-wrap-prefix-mode)
-  (org-mode . visual-fill-column-mode)
   :config
   (setq org-directory "~/org")
   (setq org-capture-templates
